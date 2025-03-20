@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 mx-auto">
+            <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                
+                <!-- Nombre -->
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name"
+                    [(ngModel)]="name" required>
+                </div>
+
+                <!-- Modelo -->
+                <div class="form-group">
+                    <label for="model">Modelo</label>
+                    <input type="text" class="form-control" id="model" name="model"
+                    [(ngModel)]="model" required>
+                </div>
+
+                <!-- Número de Serie -->
+                <div class="form-group">
+                    <label for="serialNumber">Número de Serie</label>
+                    <input type="text" class="form-control" id="serialNumber" name="serialNumber"
+                    [(ngModel)]="serialNumber" required>
+                </div>
+
+                <!-- Estado (status) -->
+                <div class="form-group">
+                    <label for="status">Estado</label>
+                    <select class="form-control" id="status" name="status" [(ngModel)]="status" required>
+                        <option value="ACTIVE">Activo</option>
+                        <option value="INACTIVE">Inactivo</option>
+                        <option value="MAINTENANCE">Mantenimiento</option>
+                    </select>
+                </div>
+
+                <!-- Ubicación (Opcional) -->
+                <div class="form-group">
+                    <label for="location">Ubicación</label>
+                    <input type="text" class="form-control" id="location" name="location"
+                    [(ngModel)]="location">
+                </div>
+
+                <!-- Botón de enviar -->
+                <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+                  <i class="far fa-plus-square"></i>  Crear Máquina
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>

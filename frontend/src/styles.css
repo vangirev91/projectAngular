@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+.bg-dark {
+    background-color: #b92499 !important;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255 255 255);
+}
+.table-dark {
+    color: #fff;
+    background-color: #4d5f70;
+}

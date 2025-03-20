@@ -1,0 +1,59 @@
+
+<div class="container">
+  <h2 class="text-center">Lista de Máquinas</h2>
+  <!-- Mostrar mensaje de error si falla la carga -->
+  <div *ngIf="errorMessage" class="alert alert-danger text-center">
+    {{ errorMessage }}
+    </div>
+  <!-- 🔥 Mostrar indicador de carga -->
+  <div *ngIf="isLoading" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+        <span class="sr-only">Cargando...</span>
+    </div>
+    <p>Cargando máquinas...</p>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <input type="text" class="form-control" placeholder="Buscar por nombre" [(ngModel)]="filtroNombre" (input)="filtrarMachines()">
+    </div>
+    <div class="col-md-4">
+      <input type="text" class="form-control" placeholder="Buscar por modelo" [(ngModel)]="filtroModelo" (input)="filtrarMachines()">
+    </div>
+    <div class="col-md-4">
+      <select class="form-control" [(ngModel)]="filtroEstado" (change)="filtrarMachines()">
+        <option value="">Todos los estados</option>
+        <option value="ACTIVE">Activo</option>
+        <option value="INACTIVE">Inactivo</option>
+        <option value="MAINTENANCE">Mantenimiento</option>
+      </select>
+    </div>
+  </div>
+    <table class="table table-dark" *ngIf="!isLoading && filteredMachines.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Location</th>
+            <th scope="col">Número de Serie</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Borrar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let machine of filteredMachines">
+            <td>{{machine.name}}</td>
+            <td>{{machine.model}}</td>
+            <td>{{machine.status}}</td>
+            <td>{{machine.location}}</td>
+            <td>{{machine.serialNumber}}</td>
+            <td><button class="btn btn-outline-warning" routerLink="/editar/{{machine.id}}"><i class="far fa-edit"></i> Editar</button></td>
+            <td><button class="btn btn-outline-danger" (click)="borrar(machine.id)"><i class="far fa-trash-alt"></i> Eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Mensaje si no hay máquinas -->
+    <div *ngIf="!isLoading && filteredMachines.length === 0" class="alert alert-info text-center mt-3">
+      No hay máquinas disponibles.
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container" *ngIf="machine">
+    <div class="row mt-5">
+        <div class="col-md-4 mx-auto">
+            <form (ngSubmit)="onUpdate()" novalidate #f="ngForm">
+                
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" id="name" name="name"
+                    [(ngModel)]="machine.name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="model">Modelo</label>
+                    <input type="text" class="form-control" id="model" name="model"
+                    [(ngModel)]="machine.model" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="serialNumber">Número de Serie</label>
+                    <input type="text" class="form-control" id="serialNumber" name="serialNumber"
+                    [(ngModel)]="machine.serialNumber" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Estado</label>
+                    <select class="form-control" id="status" name="status" [(ngModel)]="machine.status" required>
+                        <option value="ACTIVE">Activo</option>
+                        <option value="INACTIVE">Inactivo</option>
+                        <option value="MAINTENANCE">Mantenimiento</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Ubicación</label>
+                    <input type="text" class="form-control" id="location" name="location"
+                    [(ngModel)]="machine.location">
+                </div>
+
+                <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">
+                    <i class="fas fa-edit"></i>Actualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
