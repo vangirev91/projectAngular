@@ -1,4 +1,4 @@
-# projectAngular
+# ProjectAngular + NestJS + PostgreSQL
 <b> Comandos empleados: </b> <br>
 $ npm i -g @nestjs/cli <br>
 $ nest new project-name  <br>
